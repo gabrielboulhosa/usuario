@@ -28,7 +28,7 @@ public class Usuario implements UserDetails {
     @Column(nullable = false, length = 100, unique = true)
     private String email;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String senha;
 
     @Override
