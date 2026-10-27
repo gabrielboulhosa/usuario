@@ -1,6 +1,8 @@
 package com.boulhosa.usuario.controller;
 
 import com.boulhosa.usuario.business.UsuarioServise;
+import com.boulhosa.usuario.business.dto.EnderecoDTO;
+import com.boulhosa.usuario.business.dto.TelefoneDTO;
 import com.boulhosa.usuario.business.dto.UsuarioDTO;
 import com.boulhosa.usuario.infrastructure.entity.Usuario;
 import com.boulhosa.usuario.infrastructure.security.JwtUtil;
@@ -39,7 +41,7 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public ResponseEntity<Usuario> buscarUsuarioPorEmail(@RequestParam("email") String email){
+    public ResponseEntity<UsuarioDTO> buscarUsuarioPorEmail(@RequestParam("email") String email){
 
         return ResponseEntity.ok(usuarioServise.buscarPorEmail(email));
 
@@ -55,6 +57,16 @@ public class UsuarioController {
     public ResponseEntity<UsuarioDTO> atualizaDadosDeUsuario(@RequestBody UsuarioDTO usuarioDTO, @RequestHeader("Authorization") String token){
         return ResponseEntity.ok(usuarioServise.atualizaDadosDeUsuario(token, usuarioDTO));
 
+    }
+
+    @PutMapping("/endereco")
+    public ResponseEntity<EnderecoDTO> atualizaEndereco(@RequestBody EnderecoDTO enderecoDTO, @RequestParam("id") Long id){
+        return ResponseEntity.ok(usuarioServise.atualizaEndereco(id, enderecoDTO));
+    }
+
+    @PutMapping("/telefone")
+    public ResponseEntity<TelefoneDTO> atualizaTelefone(@RequestBody TelefoneDTO telefoneDTO, @RequestParam("id") Long id){
+        return ResponseEntity.ok(usuarioServise.atualizaTelefone(id, telefoneDTO));
     }
 
 }
