@@ -2,6 +2,8 @@ package com.boulhosa.usuario.business.dto;
 
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -12,4 +14,6 @@ public class UsuarioDTO {
     private String nome;
     private String email;
     private String senha;
+    private List<EnderecoDTO> enderecos;
+    private List<TelefoneDTO> telefones;
 }

@@ -31,6 +31,14 @@ public class Usuario implements UserDetails {
     @Column(nullable = false)
     private String senha;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    private List<Endereco> enderecos;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    private List<Telefone> telefones;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
